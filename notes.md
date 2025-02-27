@@ -1,0 +1,5 @@
+- Overall score for completeness and
+- Show number of products
+- For each product, show the types of data present
+- For each data category, show details - missing, incorrect
+- For each detail, show quality

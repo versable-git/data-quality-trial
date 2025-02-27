@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import { FAQ } from "./(home)/faq";
 import { Footer } from "./(home)/footer";
 import { Hero } from "./(home)/hero";
@@ -6,19 +8,23 @@ import { ImmediateResults } from "./(home)/result";
 import { DataUploadForm } from "./(home)/upload-form";
 
 export const Home = () => {
+  const [showResults, setShowResults] = useState<string | null>(null);
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <Hero />
 
       {/* Data Upload Form */}
-      <DataUploadForm />
+      <DataUploadForm setShowResults={setShowResults} />
 
-      {/* Immediate Results */}
-      <ImmediateResults />
-
-      {/* Report CTA */}
-      <Report />
+      {showResults && (
+        <>
+          {/* Immediate Results */}
+          <ImmediateResults key={showResults} />
+          {/* Report CTA */}
+          <Report />
+        </>
+      )}
 
       {/* FAQ */}
       <FAQ />

@@ -4,7 +4,11 @@ import { useState } from "react";
 import { FaFileInvoice } from "react-icons/fa6";
 import { RiAiGenerate } from "react-icons/ri";
 
-export const DataUploadForm = () => {
+export const DataUploadForm = ({
+  setShowResults,
+}: {
+  setShowResults: (show: string) => void;
+}) => {
   const urlSearchParams = useSearchParams();
   const initialEmail = urlSearchParams.get("email");
 
@@ -16,6 +20,7 @@ export const DataUploadForm = () => {
     e.preventDefault();
     // Handle form submission
     console.log("Form submitted:", formData);
+    setShowResults(Date.now().toString());
   };
 
   return (
@@ -84,10 +89,16 @@ export const DataUploadForm = () => {
               )}
             </label>
           </div>
-          <button type="submit" className="btn btn-accent w-full gap-2">
-            <RiAiGenerate size={18} />
-            Generate My Data Score
-          </button>
+          {formData.file && (
+            <button
+              type="submit"
+              className="btn btn-accent w-full gap-2"
+              disabled={!formData.file}
+            >
+              <RiAiGenerate size={18} />
+              Generate My Data Score
+            </button>
+          )}
           <p className="text-center text-sm text-gray-400">
             We respect your data privacy. No information will be shared.
           </p>
