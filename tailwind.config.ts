@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const daisyui = require("daisyui");
 import type { Config } from "tailwindcss";
 
 export default {
@@ -14,5 +16,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [daisyui],
 } satisfies Config;
