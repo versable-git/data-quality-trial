@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { FaFileInvoice } from "react-icons/fa6";
 
 export const DataUploadForm = () => {
   const [formData, setFormData] = useState({
@@ -31,6 +32,7 @@ export const DataUploadForm = () => {
               placeholder="Work Email"
               value={formData.email}
               className="input input-bordered input-neutral w-full max-w-xs"
+              id="email-input"
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
@@ -42,22 +44,39 @@ export const DataUploadForm = () => {
               accept=".xml,.xlsx,.xls"
               className="hidden"
               id="file-upload"
-              onChange={(e) =>
-                setFormData({ ...formData, file: e.target.files?.[0] || null })
-              }
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  setFormData({ ...formData, file });
+                }
+              }}
             />
             <label
               htmlFor="file-upload"
               className="flex cursor-pointer flex-col items-center justify-center gap-2"
             >
               {/* <Upload className="h-8 w-8 text-muted-foreground" /> */}
-              <span className="text-sm text-gray-400">
-                Drop your PIES XML or Excel file here, or click to browse
-              </span>
-              {formData.file && (
-                <span className="mt-2 text-sm text-primary">
-                  {formData.file.name}
+              {!formData.file && (
+                <span className="text-sm text-gray-400">
+                  Drop your PIES XML or Excel file here, or click to browse
                 </span>
+              )}
+              {formData.file && (
+                <div className="mt-2 text-sm text-neutral flex flex-col items-center">
+                  <FaFileInvoice size={64} />
+                  <span className="text-xs text-accent/50 mt-6 mb-1">
+                    {formData.file.name}
+                  </span>
+                  {formData.file.name.endsWith(".xlsx") && (
+                    <span className="text-xs text-accent/50">Excel file</span>
+                  )}
+                  {formData.file.name.endsWith(".xls") && (
+                    <span className="text-xs text-accent/50">Excel file</span>
+                  )}
+                  {formData.file.name.endsWith(".xml") && (
+                    <span className="text-xs text-accent/50">XML file</span>
+                  )}
+                </div>
               )}
             </label>
           </div>

@@ -1,7 +1,14 @@
+"use client";
 import { FiUpload } from "react-icons/fi";
 import { IoShieldOutline, IoShieldSharp } from "react-icons/io5";
 
 export const Hero = () => {
+  const handleUpload = () => {
+    const uploadInput = document.getElementById("file-upload");
+    const emailInput = document.getElementById("email-input");
+    uploadInput?.click();
+    emailInput?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
   return (
     <section className="relative flex min-h-[80vh] flex-col items-center justify-center px-4 py-20 text-center text-gray-500 ">
       <div className="container max-w-4xl">
@@ -12,8 +19,14 @@ export const Hero = () => {
           Discover how your product data measures up to PIES standards—and get
           expert recommendations to improve it instantly.
         </p>
-        <button className="mb-8 btn btn-accent btn-md">
-          <FiUpload className="mr-2" size={20} />
+        <button
+          className="mb-8 btn btn-accent btn-md group/upload"
+          onClick={() => handleUpload()}
+        >
+          <FiUpload
+            className="mr-2 group-hover/upload:translate-y-[-2px] transition-all"
+            size={20}
+          />
           Get My Free Data Audit
         </button>
         <p className="text-sm text-muted-foreground">
