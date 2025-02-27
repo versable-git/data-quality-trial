@@ -16,7 +16,7 @@ export const Footer = () => {
           Start Optimizing Your Product Data Today!
         </h2>
         <button
-          className="btn btn-accent mb-8 gap-3 transition-all hover:gap-4"
+          className="btn btn-accent mb-8 gap-3 transition-all"
           onClick={handleUpload}
         >
           Get My Free Data Audit

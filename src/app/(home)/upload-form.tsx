@@ -1,13 +1,17 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FaFileInvoice } from "react-icons/fa6";
+import { RiAiGenerate } from "react-icons/ri";
 
 export const DataUploadForm = () => {
+  const urlSearchParams = useSearchParams();
+  const initialEmail = urlSearchParams.get("email");
+
   const [formData, setFormData] = useState({
-    email: "",
+    email: initialEmail || "",
     file: null as File | null,
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
@@ -38,7 +42,7 @@ export const DataUploadForm = () => {
               }
             />
           </div>
-          <div className="rounded-lg border-2 border-dashed border-gray-300 p-8 hover:border-gray-400 transition">
+          <div className="rounded-lg border-2 border-dashed border-gray-300 hover:border-gray-400 transition">
             <input
               type="file"
               accept=".xml,.xlsx,.xls"
@@ -53,7 +57,7 @@ export const DataUploadForm = () => {
             />
             <label
               htmlFor="file-upload"
-              className="flex cursor-pointer flex-col items-center justify-center gap-2"
+              className="flex h-full p-8 cursor-pointer flex-col items-center justify-center gap-2"
             >
               {/* <Upload className="h-8 w-8 text-muted-foreground" /> */}
               {!formData.file && (
@@ -80,7 +84,8 @@ export const DataUploadForm = () => {
               )}
             </label>
           </div>
-          <button type="submit" className="btn btn-accent w-full">
+          <button type="submit" className="btn btn-accent w-full gap-2">
+            <RiAiGenerate size={18} />
             Generate My Data Score
           </button>
           <p className="text-center text-sm text-gray-400">

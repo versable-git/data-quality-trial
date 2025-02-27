@@ -11,7 +11,7 @@ export const Hero = () => {
   };
   return (
     <section className="relative flex min-h-[80vh] flex-col items-center justify-center px-4 py-20 text-center text-gray-500 ">
-      <div className="container max-w-4xl">
+      <div className="mx-auto max-w-4xl">
         <h1 className="mb-6 text-6xl font-bold tracking-tighter text-gray-900">
           How Accurate & Complete is Your Product Data? Find Out Instantly.
         </h1>
@@ -20,13 +20,10 @@ export const Hero = () => {
           expert recommendations to improve it instantly.
         </p>
         <button
-          className="mb-8 btn btn-accent btn-md group/upload"
+          className="mb-8 btn btn-accent btn-md"
           onClick={() => handleUpload()}
         >
-          <FiUpload
-            className="mr-2 group-hover/upload:translate-y-[-2px] transition-all"
-            size={20}
-          />
+          <FiUpload className="mr-2 transition-all" size={20} />
           Get My Free Data Audit
         </button>
         <p className="text-sm text-muted-foreground">

@@ -25,6 +25,14 @@ body {
 .btn {
   box-shadow: none;
   padding: 1.5rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  transition: all 0.1s linear;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 @plugin "daisyui" {
